@@ -26,7 +26,8 @@
         "lint": "eslint . --ext .js,.jsx",
         "preinstall": "rm -rf node_modules",
         "start": "npm run dev",
-        "test": "jest"
+        "test": "jest",
+        "temp": "npm run test"
     },
     "dependencies": {
         "@paypal/sdk-client": "^4.0.80",
