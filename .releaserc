@@ -13,8 +13,7 @@
         [
             "@semantic-release/exec",
             {
-                "prepareCmd": "./scripts/semantic-release/assets.sh",
-                "publishCmd": "./scripts/semantic-release/merge.sh"
+                "prepareCmd": "./scripts/semantic-release/assets.sh"
             }
         ],
         [
