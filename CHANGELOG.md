@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.1.4](https://github.com/Seavenly/paypal-messaging-components/compare/v1.1.3...v1.1.4) (2019-09-11)
+
+
+### Bug Fixes
+
+* test ([10a01c1](https://github.com/Seavenly/paypal-messaging-components/commit/10a01c1))
 
 ### [1.1.3](https://github.com/paypal/paypal-messaging-components/compare/v1.1.2...v1.1.3) (2019-09-11)
 
