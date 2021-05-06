@@ -1,6 +1,6 @@
 {
     "name": "@paypal/messaging-components",
-    "version": "1.12.9",
+    "version": "1.12.10",
     "description": "PayPal messaging library for integrating PayPal Credit messaging on merchant websites",
     "homepage": "https://github.com/paypal/paypal-messaging-components",
     "repository": {
@@ -40,7 +40,7 @@
         "jsx-pragmatic": "^2.0.7",
         "post-robot": "^10.0.29",
         "zalgo-promise": "^1.0.38",
-        "zoid": "^9.0.36"
+        "zoid": "^9.0.65"
     },
     "devDependencies": {
         "@semantic-release/changelog": "^3.0.4",
