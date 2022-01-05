@@ -26,6 +26,11 @@ const Content = ({ headerRef, contentWrapper }) => {
     // Product can be NONE when standalone modal so default to first product
     const initialProduct = arrayFind(products, prod => prod.meta.product === product) || products[0];
     const [selectedProduct, setSelectedProduct] = useState(initialProduct.meta.product);
+    
+    const moreTest = 1;
+    if (moreTest) {
+        moreTest = 2;
+    }
 
     useScroll(
         ({ target: { scrollTop } }) => {
