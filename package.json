@@ -2,10 +2,10 @@
     "name": "@paypal/messaging-components",
     "version": "1.27.2",
     "description": "PayPal messaging library for integrating PayPal Credit messaging on merchant websites",
-    "homepage": "https://github.com/paypal/paypal-messaging-components",
+    "homepage": "https://github.com/Seavenly/paypal-messaging-components",
     "repository": {
         "type": "git",
-        "url": "https://github.com/paypal/paypal-messaging-components.git"
+        "url": "https://github.com/Seavenly/paypal-messaging-components.git"
     },
     "main": "dist/messaging.js",
     "module": "src/index.js",
