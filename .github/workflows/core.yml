@@ -3,11 +3,10 @@ name: Lint, Unit, Non-snapshot tests
 on:
     # allow for manual triggers
     workflow_dispatch: {}
-
+    workflow_call: {}
     push:
         branches:
             - develop
-            - release
     pull_request: {}
 
 jobs:

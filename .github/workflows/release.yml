@@ -1,15 +1,34 @@
-name: Deploy
+name: Release
 on:
     # allow for manual triggers
     workflow_dispatch: {}
-
     push:
         branches:
             - release
 
 jobs:
-    deploy:
-        name: Deploy
+    debug:
+        name: Debug
+        runs-on: ubuntu-latest
+        steps:
+            - uses: hmarr/debug-action@v2
+
+            - name: machine echo github
+              env: { CONTENT: '${{ toJson(github) }}' }
+              run: 'echo $CONTENT'
+
+    core:
+        uses: Seavenly/paypal-messaging-components/.github/workflows/core.yml@release
+
+    compareSnapshotsUS:
+        uses: Seavenly/paypal-messaging-components/.github/workflows/compareSnapshotsUS.yml@release
+
+    compareSnapshotsNonUS:
+        uses: Seavenly/paypal-messaging-components/.github/workflows/compareSnapshotsNonUS.yml@release
+
+    release:
+        name: Release
+        needs: [core, compareSnapshotsUS, compareSnapshotsNonUS]
         runs-on: ubuntu-latest
         steps:
             - name: Checkout repo
@@ -28,7 +47,7 @@ jobs:
               with:
                   useLockFile: false
 
-            - name: Deploy
+            - name: Release
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
               run: npx semantic-release@18

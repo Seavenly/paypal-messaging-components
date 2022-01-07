@@ -2,11 +2,10 @@ name: Snapshot Comparison Tests - Non-US
 on:
     # allow for manual triggers
     workflow_dispatch: {}
-
+    workflow_call: {}
     push:
         branches:
             - develop
-            - release
     pull_request: {}
 
 jobs:
