@@ -43,13 +43,12 @@ jobs:
         strategy:
             matrix:
                 locale: ${{ fromJSON(needs.getLocales.outputs.locale) }}
-                node: [12]
         steps:
             - uses: hmarr/debug-action@v2
 
-            - name : machine echo github
-              env : { CONTENT : "${{ toJson(github) }}" }
-              run : "echo $CONTENT"
+            - name: machine echo github
+              env: { CONTENT: '${{ toJson(github) }}' }
+              run: 'echo $CONTENT'
 
             - name: Checkout repo
               uses: actions/checkout@v2
@@ -57,7 +56,7 @@ jobs:
             - name: Setup node
               uses: actions/setup-node@v1
               with:
-                  node-version: ${{ matrix.node }}
+                  node-version: 12
 
             - name: 📥 Download deps
               uses: bahmutov/npm-install@v1
@@ -81,27 +80,27 @@ jobs:
             - name: Format Artifact Inputs
               id: artifactInputs
               run: |
-                if [ -z "$(git status --porcelain)" ]
-                then
-                    echo "::set-output name=skip::true"
-                    exit 0
-                fi
+                  if [ -z "$(git status --porcelain)" ]
+                  then
+                      echo "::set-output name=skip::true"
+                      exit 0
+                  fi
 
-                ARTIFACT_NAME="snapshot-$(sed 's/\//-/g' <<< '${{ matrix.locale }}')"
-                echo "::set-output name=name::$ARTIFACT_NAME"
+                  ARTIFACT_NAME="snapshot-$(sed 's/\//-/g' <<< '${{ matrix.locale }}')"
+                  echo "::set-output name=name::$ARTIFACT_NAME"
 
-                ARTIFACT_PATH="snapshots/"
-                echo "::set-output name=path::$ARTIFACT_PATH"
+                  ARTIFACT_PATH="snapshots/"
+                  echo "::set-output name=path::$ARTIFACT_PATH"
 
-                UPDATED_SNAPSHOTS=$(git status --porcelain | grep 'snapshots' | sed -E "s/^.{3}//")
-                echo "$UPDATED_SNAPSHOTS" | while read -r path
-                do
-                    newpath=$(echo $path | sed -E "s/^.+(snapshots.+)$/\\1/")
-                    newdir=$(echo $newpath | sed -E "s/^(.+\/)[^\/]+$/\\1/")
+                  UPDATED_SNAPSHOTS=$(git status --porcelain | grep 'snapshots' | sed -E "s/^.{3}//")
+                  echo "$UPDATED_SNAPSHOTS" | while read -r path
+                  do
+                      newpath=$(echo $path | sed -E "s/^.+(snapshots.+)$/\\1/")
+                      newdir=$(echo $newpath | sed -E "s/^(.+\/)[^\/]+$/\\1/")
 
-                    mkdir -p "${{ github.workspace }}/$newdir"
-                    mv "${{ github.workspace }}/$path" "${{ github.workspace }}/$newpath"
-                done
+                      mkdir -p "${{ github.workspace }}/$newdir"
+                      mv "${{ github.workspace }}/$path" "${{ github.workspace }}/$newpath"
+                  done
 
             - name: Save Snapshot Artifact
               if: steps.artifactInputs.outputs.skip != 'true'
@@ -110,5 +109,3 @@ jobs:
                   name: ${{ steps.artifactInputs.outputs.name }}
                   path: ${{ steps.artifactInputs.outputs.path }}
                   retention-days: 1
-
-
