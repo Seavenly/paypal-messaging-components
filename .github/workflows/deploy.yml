@@ -11,17 +11,17 @@ jobs:
     deploy:
         name: Deploy
         runs-on: ubuntu-latest
-        strategy:
-            matrix:
-                node: [12]
         steps:
             - name: Checkout repo
               uses: actions/checkout@v2
+              with:
+                  # pulls all commits (needed for semantic release to correctly version)
+                  fetch-depth: '0'
 
             - name: Setup node
               uses: actions/setup-node@v1
               with:
-                  node-version: ${{ matrix.node }}
+                  node-version: 14
 
             - name: 📥 Download deps
               uses: bahmutov/npm-install@v1
@@ -29,4 +29,6 @@ jobs:
                   useLockFile: false
 
             - name: Deploy
-              run: npx semantic-release@15
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              run: npx semantic-release@18
