@@ -93,7 +93,7 @@ jobs:
                       exit 0
                   fi
 
-                  ARTIFACT_NAME="snapshot-$(sed 's/\//-/g' <<< '${{ matrix.locale }}')"
+                  ARTIFACT_NAME="snapshot-$(sed 's/\//-/g' <<< '${{ matrix.locale }}/${{ matrix.testPathPattern }}')"
                   echo "::set-output name=name::$ARTIFACT_NAME"
 
                   ARTIFACT_PATH="snapshots/"
