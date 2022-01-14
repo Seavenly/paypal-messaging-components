@@ -1,0 +1,69 @@
+name: Update Snapshots - US
+on:
+    # allow for manual triggers
+    workflow_dispatch: {}
+    pull_request:
+        types: [labeled]
+
+defaults:
+    run:
+        shell: bash
+
+jobs:
+    getTestPathPatterns:
+        name: Get Locales
+        if: github.event.pull_request.label.name == 'snapshots'
+        runs-on: ubuntu-latest
+        outputs:
+            testPathPattern: ${{ steps.setMatrix.outputs.testPathPattern }}
+        steps:
+            - name: Checkout repo
+              uses: actions/checkout@v2
+
+            - id: setMatrix
+              run: echo "::set-output name=testPathPattern::$(cat ./.github/configs/usTestPathPatterns.json | tr '\n' ' ')"
+
+    updateSnapshots:
+        name: US
+        runs-on: ubuntu-latest
+        needs: getTestPathPatterns
+        strategy:
+            matrix:
+                testPathPattern: ${{ fromJSON(needs.getTestPathPatterns.outputs.testPathPattern) }}
+                node: [12]
+        steps:
+            - uses: hmarr/debug-action@v2
+
+            - name : machine echo github
+              env : { CONTENT : "${{ toJson(github) }}" }
+              run : "echo $CONTENT"
+
+                #            - name: Checkout repo
+                #              uses: actions/checkout@v2
+                #
+                #            - name: Setup node
+                #              uses: actions/setup-node@v1
+                #              with:
+                #                  node-version: ${{ matrix.node }}
+                #
+                #            - name: 📥 Download deps
+                #              uses: bahmutov/npm-install@v1
+                #              with:
+                #                  useLockFile: false
+                #
+                #            - name: Run server
+                #              run: |
+                #                  ./.github/scripts/runServer.sh
+                #
+                #            - name: Update US Snapshots
+                #              run: |
+                #                  rm -rf tests/functional/snapshots
+                #                  npm run test:func:ciupdate -- --testPathPattern spec/US/${{ matrix.testPathPattern }}
+                #                  git status
+                #
+                #            - name: Save Snapshot Artifact
+                #              uses: actions/upload-artifact@v2
+                #              with:
+                #                  name: snapshots-${{ matrix.testPathPattern }}
+                #                  path: tests/functional/snapshots
+
