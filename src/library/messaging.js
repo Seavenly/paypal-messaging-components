@@ -9,4 +9,5 @@ window.paypal.MessagesModal = MessagesModal;
 
 // This is a helpful message
 // This is super cool
+// But not too cool
 setup();
