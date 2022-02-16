@@ -6,5 +6,5 @@ import { Messages, MessagesModal, setup } from './interface';
 window.paypal = window.paypal ?? {};
 window.paypal.Messages = Messages;
 window.paypal.MessagesModal = MessagesModal;
-
+// Setup function
 setup();
