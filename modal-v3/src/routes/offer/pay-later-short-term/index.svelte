@@ -1,12 +1,12 @@
 <script lang="js">
-	import Header from '../../components/Header.svelte';
-	import BodyContent from '../../components/BodyContent.svelte';
-	import Instructions from '../../components/Instructions.svelte';
-	import ProductListLink from '../../components/ProductListLink.svelte';
-	import Donut from '../../components/Donut.svelte';
-	import InlineLinks from '../../components/InlineLinks.svelte';
-	import shortTermData from '../../data/shortTerm.js';
-	import { currencyFormat } from '../../lib/currencyFormat';
+	import Header from '../../../components/Header.svelte';
+	import BodyContent from '../../../components/BodyContent.svelte';
+	import Instructions from '../../../components/Instructions.svelte';
+	import ProductListLink from '../../../components/ProductListLink.svelte';
+	import Donut from '../../../components/Donut.svelte';
+	import InlineLinks from '../../../components/InlineLinks.svelte';
+	import shortTermData from '../../../data/shortTerm.js';
+	import { currencyFormat } from '../../../lib/currencyFormat';
 
 	export let productMeta = shortTermData.productMeta;
 	export let content = shortTermData.content;
@@ -107,6 +107,6 @@
 </BodyContent>
 
 <style type="text/scss">
-	@import '../../styles/components/_content.scss';
+	@import '../../../styles/components/_content.scss';
 	@import './index.scss';
 </style>
