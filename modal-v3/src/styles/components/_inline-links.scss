@@ -1,0 +1,12 @@
+// inline-link, Singular; the component InlineLinks provides multiple links in a wall of text,
+// but the class is applied to only one <a> element
+.inline-link,
+.inline-text {
+	&::before {
+		content: ' ';
+	}
+
+	&::after {
+		content: ' ';
+	}
+}
