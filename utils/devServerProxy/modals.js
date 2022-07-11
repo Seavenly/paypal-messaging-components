@@ -49,8 +49,19 @@ const getModalData = req => {
 
 export default function createModalRoutes(app, server) {
     const { port } = server.options;
+    // eslint-disable-next-line global-require
+    const url = require('url');
 
     app.get('/credit-presentment/smart/modal', async (req, res) => {
+        return res.redirect(
+            url.format({
+                pathname: '/test',
+                query: req.query
+            })
+        );
+    });
+
+    app.get('/test', async (req, res) => {
         const { scriptUID } = req.query;
         const props = getModalData(req);
         const encodedData = btoa(toBinary(JSON.stringify(props)));
@@ -86,7 +97,6 @@ export default function createModalRoutes(app, server) {
 
         res.send(markup);
     });
-
     app.get('/credit-presentment/modalContent', async (req, res) => {
         const props = getModalData(req);
 

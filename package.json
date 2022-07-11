@@ -24,7 +24,7 @@
         "build:analyze": "webpack --env.analyze",
         "build:demo": "webpack --env.demo",
         "dev:hack": "concurrently \"npm run dev:standalone\" \"npm run dev:modal-v3\"",
-        "dev:modal-v3": "cd ./modal-v3 && vite dev --https --host localhost.paypal.com --port 8090",
+        "dev:modal-v3": "cd ./modal-v3 && npm run dev",
         "dev": "webpack-dev-server --config webpack.config.dev.js --env.TARGET=sdk --env.NODE_ENV=local --env.STAGE_TAG=local",
         "dev:ci": "webpack-dev-server --config webpack.config.dev.js --env.TARGET=ci --env.NODE_ENV=local --env.STAGE_TAG=local",
         "dev:standalone": "webpack-dev-server --config webpack.config.dev.js --env.TARGET=standalone --env.NODE_ENV=local --env.STAGE_TAG=local",
@@ -44,6 +44,7 @@
         "test:func:snapshots:ciupdate": "jest --verbose --config tests/functional/v2/jest.snapshotTests.config.js --updateSnapshot"
     },
     "dependencies": {
+        "7": "0.0.1",
         "@krakenjs/beaver-logger": "^5.0.0",
         "@krakenjs/belter": "^2.0.0",
         "@krakenjs/jsx-pragmatic": "^3.0.0",
@@ -54,13 +55,14 @@
         "@paypal/sdk-client": "^4.0.166",
         "@paypal/sdk-constants": "^1.0.118",
         "@paypal/sdk-logos": "^1.0.45",
-        "core-js-pure": "^3.0.1"
+        "core-js-pure": "^3.0.1",
+        "grumbler-scripts": "^6.0.0"
     },
     "devDependencies": {
         "@babel/eslint-parser": "^7.17.0",
         "@babel/register": "^7.10.4",
         "@babel/runtime": "7.12.18",
-        "@krakenjs/grumbler-scripts": "^6.0.2",
+        "@krakenjs/grumbler-scripts": "^7.0.4",
         "@semantic-release/changelog": "^6.0.1",
         "@semantic-release/exec": "^6.0.3",
         "@semantic-release/git": "^10.0.1",
