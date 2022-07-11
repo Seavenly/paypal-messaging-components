@@ -1,8 +1,8 @@
 <script>
-	import Header from '../../components/Header.svelte';
-	import BodyContent from '../../components/BodyContent.svelte';
-	import Tile from '../../components/Tile.svelte';
-	import productListData from '../../data/productList.js';
+	import Header from '../components/Header.svelte';
+	import BodyContent from '../components/BodyContent.svelte';
+	import Tile from '../components/Tile.svelte';
+	import productListData from '../data/productList.js';
 
 	export let content = productListData.content;
 
@@ -25,7 +25,7 @@
 	export let setViewName = () => {};
 </script>
 
-<Header logo={'logo'} headline={content?.headline} subheadline={content?.subheadline} />
+<Header logo={'logo'} headline={content?.headline} />
 <BodyContent>
 	<div class="content__container">
 		<main class="main">
@@ -65,6 +65,6 @@
 </BodyContent>
 
 <style type="text/scss">
-	@import '../../styles/components/_content.scss';
+	@import '../styles/components/_content.scss';
 	@import './index.scss';
 </style>
