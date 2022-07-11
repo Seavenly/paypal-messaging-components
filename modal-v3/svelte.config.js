@@ -12,6 +12,15 @@ const config = {
 		paths: {
 			base: '/credit-presentment/smart/modal'
 		}
+	},
+
+	// TODO: figure out how to deal with the "unused" css properly
+	onwarn: (warning, handler) => {
+		const { code } = warning;
+
+		if (code === 'css-unused-selector') return;
+
+		handler(warning);
 	}
 };
 
