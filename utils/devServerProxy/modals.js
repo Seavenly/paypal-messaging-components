@@ -53,9 +53,16 @@ export default function createModalRoutes(app, server) {
     const url = require('url');
 
     app.get('/credit-presentment/smart/modal', async (req, res) => {
+        // return res.redirect(
+        //     url.format({
+        //         pathname: '/test',
+        //         query: req.query
+        //     })
+        // );
+
         return res.redirect(
             url.format({
-                pathname: '/test',
+                pathname: 'https://localhost.paypal.com:8090/',
                 query: req.query
             })
         );
