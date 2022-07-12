@@ -8,14 +8,12 @@
 	import InlineLinks from '../../../components/InlineLinks.svelte';
 	import { currencyFormat } from '../../../lib/currencyFormat';
 
-
-	
 	export let zoidInterfaceUrl;
 	export let scriptUid;
 	export let modalData;
-	export let productMeta = modalData.views[0].meta;
-	export let content = modalData.views[0].content;
 
+	let data = modalData.views.find((view) => view.meta.product === 'PAY_LATER_SHORT_TERM');
+	let { content, meta: productMeta } = data;
 
 	const {
 		instructions,

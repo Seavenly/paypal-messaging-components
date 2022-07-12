@@ -2,12 +2,11 @@
 	import Icon from './Icon.svelte';
 
 	export let modalData;
-	export let content = modalData.products[0].content;
+	export let content = modalData.views[0].content;
 	export let header;
 	export let body;
 	export let icon;
 	export let viewName;
-	
 
 	export let setViewName = console.log;
 	// TODO: change to original: const { onClick } = useXProps();

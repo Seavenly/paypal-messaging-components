@@ -10,7 +10,9 @@
 	export let zoidInterfaceUrl;
 	export let scriptUid;
 	export let modalData;
-	export let content = modalData.views[0].content;
+
+	let data = modalData.views.find((view) => view.meta.product === 'PAYPAL_CREDIT_NO_INTEREST');
+	let { content } = data;
 
 	const handleApplyNowClick = () => {
 		console.log('Apply for PayPal Credit.');
