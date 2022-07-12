@@ -3,7 +3,7 @@ import objectAssign from 'core-js-pure/stable/object/assign';
 import Map from 'core-js-pure/stable/map';
 import { eventEmitter } from '@krakenjs/belter/src';
 
-import { getLibraryVersion, getPayPalDomain } from './sdk';
+import { getLibraryVersion, getPayPalDomain, getEnv } from './sdk';
 import { createState } from './miscellaneous';
 
 // Following the global naming convention of zoid and prevent collision with merchant.js
@@ -62,6 +62,11 @@ export const createTitleGenerator = () => {
  * @returns {String} URL of requested type
  */
 export function getGlobalUrl(type) {
+    // FIXME: Redo this
+    if (type === 'MODAL' && getEnv() === 'local') {
+        return `https://localhost.paypal.com:8090${__MESSAGES__.__URI__[`__${type.toUpperCase()}__`]}`;
+    }
+
     return `${getPayPalDomain()}${__MESSAGES__.__URI__[`__${type.toUpperCase()}__`]}`;
 }
 

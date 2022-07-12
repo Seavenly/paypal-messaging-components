@@ -9,7 +9,7 @@ import { localizeCurrency, localizeNumber } from '../../../utils/devServerProxy/
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-const CONTENT_PATH = path.resolve(__dirname, '../../../content/');
+const CONTENT_PATH = path.resolve(__dirname, '../../../src/components/modal/lib/hooks/content');
 
 const selectBestOffer = (offers = [], amount) =>
 	offers.reduce(
@@ -104,10 +104,13 @@ const getMorsVars = (country, offer, amount) => {
 };
 
 export default function getDevAccountDetailsV2({ account, amount, buyerCountry }) {
+	console.log('Here');
 	if (devAccountMap[account]) {
 		const [country, productNames, messageName] = devAccountMap[account];
 
-		const offers = JSON.parse(fs.readFileSync(path.resolve(__dirname, './terms.json'), 'utf-8'));
+		const offers = JSON.parse(
+			fs.readFileSync(path.resolve(__dirname, '../config/terms.json'), 'utf-8')
+		);
 		const terms = getTerms(country, offers, Number(amount));
 
 		return {
