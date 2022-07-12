@@ -6,11 +6,11 @@
 	import BodyContent from '../../../components/BodyContent.svelte';
 	import Button from '../../../components/Button.svelte';
 	import InlineLinks from '../../../components/InlineLinks.svelte';
-	import noInterestData from '../../../data/noInterest.js';
 
-	export let content = noInterestData?.content;
 	export let zoidInterfaceUrl;
 	export let scriptUid;
+	export let customData;
+	export let content = customData.views[0].content;
 
 	const handleApplyNowClick = () => {
 		console.log('Apply for PayPal Credit.');

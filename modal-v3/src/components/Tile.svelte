@@ -1,7 +1,8 @@
 <script>
 	import Icon from './Icon.svelte';
-	import productListData from '../data/productList.js';
 
+	export let customData;
+	export let content = customData.products[0].content;
 	export let header;
 	export let body;
 	export let icon;
@@ -11,7 +12,7 @@
 	export let setViewName = console.log;
 	// TODO: change to original: const { onClick } = useXProps();
 	export let onClick = console.log;
-	const tileIcons = productListData.content.tileIcons;
+	const tileIcons = content.tileIcons;
 </script>
 
 <button

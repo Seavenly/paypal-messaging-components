@@ -3,14 +3,12 @@
 	import Header from '@/components/Header.svelte';
 	import BodyContent from '@/components/BodyContent.svelte';
 	import Tile from '@/components/Tile.svelte';
-	import productListData from '@/data/productList.js';
 
-	export let content = productListData.content;
+	// export let content = productListData.content;
 	export let zoidInterfaceUrl;
 	export let scriptUid;
 	export let customData;
-
-	console.log(customData.views)
+	export let content = customData.products[0].content;
 
 	const { instructions, disclosure, productTiles } = content;
 
@@ -53,7 +51,7 @@
 								</div>
 							{/if}
 							{#each availableTiles.payLater as { header, body, icon, viewName }}
-								<Tile {header} {body} {icon} {viewName} {setViewName} />
+								<Tile {header} {body} {icon} {viewName} {setViewName} {customData}/>
 							{/each}
 
 							{#if showCreditInstructions}
@@ -64,7 +62,7 @@
 								</div>
 							{/if}
 							{#each availableTiles.credit as { header, body, icon, viewName }}
-								<Tile {header} {body} {icon} {viewName} {setViewName} />
+								<Tile {header} {body} {icon} {viewName} {setViewName} {customData}/>
 							{/each}
 						</div>
 						<div class="content__col collapsed">

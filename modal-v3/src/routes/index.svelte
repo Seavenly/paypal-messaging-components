@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { xprops } from '../stores/xprops';
-	import ProductList from './product-list/index.svelte';
 	import ShortTerm from './offer/pay-later-short-term/index.svelte';
+	import ProductList from './product-list/index.svelte';
 
 	export let zoidInterfaceUrl: string;
 	export let scriptUid: string;
