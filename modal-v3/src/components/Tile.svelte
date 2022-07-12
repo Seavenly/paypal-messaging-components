@@ -17,7 +17,7 @@
 	class="tile"
 	aria-label={`${header} ${body}`}
 	type="button"
-	onClick={() => {
+	on:click={() => {
 		setViewName(viewName);
 		onClick({ linkName: viewName, src: 'link_click' });
 	}}
