@@ -38,8 +38,10 @@
 				margin-right: 20px;
 
 				svg {
-					width: 72px;
-					height: 45px;
+					:global & {
+						width: 72px;
+						height: 45px;
+					}
 				}
 			}
 
@@ -64,4 +66,9 @@
 			}
 		}
 	}
+}
+
+.tile__row .tile__col.tile__image svg {
+	height: 45px;
+	width: 72px;
 }

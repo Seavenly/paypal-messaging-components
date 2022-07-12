@@ -3,7 +3,7 @@
 </script>
 
 <div class="content__row instructions">
-	<ol>
+	<ol class="collapsed">
 		{#each instructions as instruction, index}
 			<li class="instructions__item-wrapper">
 				<div class="instructions__bullet">

@@ -1,6 +1,8 @@
 <script>
+	import { onMount } from 'svelte';
 	import Icon from '../components/Icon.svelte';
 	import { isLander, isIframe } from '../lib/';
+	import handleClose from '../lib/handleClose';
 
 	export let logo = '';
 	export let headline = '';
@@ -8,13 +10,11 @@
 
 	let landerTarget = isLander();
 	let iframeTarget = isIframe();
+
+	let closeButton;
+	onMount(() => closeButton.focus());
 	// export let isQualifying = {isQualifying ?? 'false'};
 	// export let qualifyingSubheadline = 'Qualifying Test';
-
-	const handleClose = () => {
-		console.log('This button closes the modal.');
-		window.xprops?.onClose?.({ linkName: 'Close Button' });
-	};
 </script>
 
 {#if !landerTarget || iframeTarget}
@@ -38,7 +38,14 @@
 	</div>
 
 	{#if !landerTarget}
-		<button class="close" aria-label="Close" type="button" id="close-btn" on:click={handleClose}>
+		<button
+			class="close"
+			aria-label="Close"
+			type="button"
+			id="close-btn"
+			bind:this={closeButton}
+			on:click={() => handleClose('Close Button')}
+		>
 			<Icon name={'close'} />
 		</button>
 	{/if}
