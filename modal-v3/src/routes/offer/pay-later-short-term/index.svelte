@@ -12,9 +12,10 @@
 	
 	export let zoidInterfaceUrl;
 	export let scriptUid;
-	export let customData;
-	export let productMeta = customData.views[0].meta;
-	export let content = customData.views[0].content;
+	export let modalData;
+	export let productMeta = modalData.views[0].meta;
+	export let content = modalData.views[0].content;
+
 
 	const {
 		instructions,

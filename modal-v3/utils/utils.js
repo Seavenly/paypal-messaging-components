@@ -1,12 +1,12 @@
-import { populateTemplate } from '../../../utils/devServerProxy/lib/miscellaneous';
-import getDevAccountDetailsV2 from './getDevAccountDetailsV2';
+import { populateTemplate } from './lib/miscellaneous.js';
+import getDevAccountDetailsV2 from './getDevAccountDetailsV2.js';
 
 export const getModalData = req => {
-	const url = new URL(req.url);
-	const clientId = url.searchParams.get('client_id');
-	const payerId = url.searchParams.get('payer_id');
-	const merchantId = url.searchParams.get('merchant_id');
-	const amount = url.searchParams.get('amount');
+	const params = new URLSearchParams(req.url);
+	const clientId = params.get('client_id');
+	const payerId = params.get('payer_id');
+	const merchantId = params.get('merchant_id');
+	const amount = params.get('amount');
 	const account = merchantId || clientId || payerId;
 
 	const { country, terms, modalViews } = getDevAccountDetailsV2({ account, amount });

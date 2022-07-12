@@ -9,8 +9,8 @@
 
 	export let zoidInterfaceUrl;
 	export let scriptUid;
-	export let customData;
-	export let content = customData.views[0].content;
+	export let modalData;
+	export let content = modalData.views[0].content;
 
 	const handleApplyNowClick = () => {
 		console.log('Apply for PayPal Credit.');

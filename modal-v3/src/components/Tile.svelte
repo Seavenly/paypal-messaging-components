@@ -1,8 +1,8 @@
 <script>
 	import Icon from './Icon.svelte';
 
-	export let customData;
-	export let content = customData.products[0].content;
+	export let modalData;
+	export let content = modalData.products[0].content;
 	export let header;
 	export let body;
 	export let icon;

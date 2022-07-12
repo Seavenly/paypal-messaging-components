@@ -7,8 +7,8 @@
 	// export let content = productListData.content;
 	export let zoidInterfaceUrl;
 	export let scriptUid;
-	export let customData;
-	export let content = customData.products[0].content;
+	export let modalData;
+	export let content = modalData.products[0].content;
 
 	const { instructions, disclosure, productTiles } = content;
 
@@ -51,7 +51,7 @@
 								</div>
 							{/if}
 							{#each availableTiles.payLater as { header, body, icon, viewName }}
-								<Tile {header} {body} {icon} {viewName} {setViewName} {customData}/>
+								<Tile {header} {body} {icon} {viewName} {setViewName} {modalData}/>
 							{/each}
 
 							{#if showCreditInstructions}
@@ -62,7 +62,7 @@
 								</div>
 							{/if}
 							{#each availableTiles.credit as { header, body, icon, viewName }}
-								<Tile {header} {body} {icon} {viewName} {setViewName} {customData}/>
+								<Tile {header} {body} {icon} {viewName} {setViewName} {modalData}/>
 							{/each}
 						</div>
 						<div class="content__col collapsed">

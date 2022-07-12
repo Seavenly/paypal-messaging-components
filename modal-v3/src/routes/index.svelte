@@ -6,13 +6,14 @@
 	export let zoidInterfaceUrl: string;
 	export let scriptUid: string;
 	export let offer: string | undefined;
-	export let customData: Object;
+	export let modalData: object;
 
 	offer = $xprops.offer;
 </script>
 
 {#if !offer}
-	<ProductList {zoidInterfaceUrl} {scriptUid} {customData}/>
+	<ProductList {zoidInterfaceUrl} {scriptUid} {modalData}/>
 {:else if offer === 'PAY_LATER_SHORT_TERM'}
-	<ShortTerm {zoidInterfaceUrl} {scriptUid} {customData}/>
+	<ShortTerm {zoidInterfaceUrl} {scriptUid} {modalData}/>
+
 {/if}
