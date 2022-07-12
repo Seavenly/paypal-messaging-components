@@ -87,120 +87,124 @@
 		}
 
 		svg {
-			width: 900px;
-			transform: translate(0, -30%);
+			:global & {
+				width: 900px;
+				transform: translate(0, -30%);
 
-			@include apiIframe {
-				min-width: 800px;
-				width: $content-wrapper-max-width-api-iframe;
+				@include apiIframe {
+					min-width: 800px;
+					width: $content-wrapper-max-width-api-iframe;
+				}
 			}
 		}
 	}
 
 	&__icons {
-		box-sizing: border-box;
-		justify-content: space-between;
-		align-items: center;
-		margin: auto;
-		z-index: 1001;
-		display: flex;
-		height: auto;
-		text-align: center;
-		position: sticky;
-		top: 0;
-		width: 100%;
-		flex: 0 0 $sticky-header-height-tablet-desktop;
+		:global & {
+			box-sizing: border-box;
+			justify-content: space-between;
+			align-items: center;
+			margin: auto;
+			z-index: 1001;
+			display: flex;
+			height: auto;
+			text-align: center;
+			position: sticky;
+			top: 0;
+			width: 100%;
+			flex: 0 0 $sticky-header-height-tablet-desktop;
 
-		@include mobile {
-			flex: 0 0 $sticky-header-height-mobile;
-		}
+			@include mobile {
+				flex: 0 0 $sticky-header-height-mobile;
+			}
 
-		.logo {
-			&__wrapper {
-				z-index: 9;
-				transform: translate(0, 2rem);
-				transition: transform 0.2s ease-out;
-				padding: 0 20px;
+			.logo {
+				&__wrapper {
+					z-index: 9;
+					transform: translate(0, 2rem);
+					transition: transform 0.2s ease-out;
+					padding: 0 20px;
 
-				@include tablet {
-					transform: translate(calc(#{$content-wrapper-max-width-tablet} / 2 - 50%), 2rem);
-					display: flex;
-					justify-content: center;
-				}
+					@include tablet {
+						transform: translate(calc(#{$content-wrapper-max-width-tablet} / 2 - 50%), 2rem);
+						display: flex;
+						justify-content: center;
+					}
 
-				@include desktop {
-					transform: translate(calc(#{$content-wrapper-max-width-desktop} / 2 - 50%), 2rem);
-					display: flex;
-					justify-content: center;
-				}
+					@include desktop {
+						transform: translate(calc(#{$content-wrapper-max-width-desktop} / 2 - 50%), 2rem);
+						display: flex;
+						justify-content: center;
+					}
 
-				@include apiIframe {
-					transform: translate(calc(#{$content-wrapper-max-width-api-iframe} / 2 - 50%), 2rem);
+					@include apiIframe {
+						transform: translate(calc(#{$content-wrapper-max-width-api-iframe} / 2 - 50%), 2rem);
 
-					// copied here because apiIframe mixin has higher priority than the scroll below
+						// copied here because apiIframe mixin has higher priority than the scroll below
+						&--scroll {
+							transform: translate(0, 0);
+						}
+					}
+
 					&--scroll {
 						transform: translate(0, 0);
 					}
-				}
 
-				&--scroll {
-					transform: translate(0, 0);
-				}
+					.pp-logo {
+						img {
+							height: 30px;
+							display: block;
+							// Account for extra space included below the SVG logo so that
+							// the img can be better centered automatically via flex
+							padding-top: 20%;
 
-				.pp-logo {
-					img {
-						height: 30px;
-						display: block;
-						// Account for extra space included below the SVG logo so that
-						// the img can be better centered automatically via flex
-						padding-top: 20%;
+							@include desktop {
+								height: 44px;
+							}
 
-						@include desktop {
-							height: 44px;
-						}
+							@include tablet {
+								height: 40px;
+							}
 
-						@include tablet {
-							height: 40px;
-						}
-
-						@include mobile {
-							height: 35px;
+							@include mobile {
+								height: 35px;
+							}
 						}
 					}
 				}
 			}
-		}
 
-		.close {
-			pointer-events: all;
-			background: transparent;
-			border: none;
-			cursor: pointer;
-			z-index: 9;
-
-			@include desktop {
-				margin-left: auto;
-			}
-
-			@include tablet {
-				margin-left: auto;
-			}
-
-			svg {
-				height: 48px;
-				width: 48px;
+			.close {
+				pointer-events: all;
+				background: transparent;
+				border: none;
+				cursor: pointer;
+				z-index: 9;
 
 				@include desktop {
-					margin: 0px;
+					margin-left: auto;
 				}
 
 				@include tablet {
-					margin: 0px;
+					margin-left: auto;
 				}
 
-				path {
-					stroke: white !important;
-					stroke-width: 2.2;
+				svg {
+					height: 48px;
+					width: 48px;
+
+					@include desktop {
+						margin: 0px;
+					}
+
+					@include tablet {
+						margin: 0px;
+					}
+
+					path {
+						stroke: white !important;
+						stroke-width: 2.2;
+					}
 				}
 			}
 		}

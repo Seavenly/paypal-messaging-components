@@ -12,7 +12,7 @@ const data = {
 
 		headline: 'Pay in 4 interest-free payments',
 		subheadline:
-			'No impact on credit score and no late fees. Available for purchases of {formattedMinAmount} to {formattedMaxAmount}.',
+			'No impact on credit score and no late fees. Available for purchases of $30 to $1,500.',
 		qualifyingSubheadline:
 			'Split your purchase of {formattedTotalCost} into {total_payments} with no impact on credit score and no late fees.',
 		donutTimestamps: ['Today', '2 weeks', '4 weeks', '6 weeks'],

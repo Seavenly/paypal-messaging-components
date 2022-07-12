@@ -21,3 +21,7 @@
 		</div>
 	</div>
 </div>
+
+<style type="text/scss">
+	@import '../styles/components/_container.scss';
+</style>
