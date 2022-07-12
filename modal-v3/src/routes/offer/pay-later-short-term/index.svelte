@@ -1,4 +1,5 @@
 <script lang="js">
+	import Modal from '../../../components/Modal.svelte';
 	import Header from '../../../components/Header.svelte';
 	import BodyContent from '../../../components/BodyContent.svelte';
 	import Instructions from '../../../components/Instructions.svelte';
@@ -55,6 +56,7 @@
 	{/if}
 </svelte:head>
 
+<Modal>
 <Header logo={'logo'} headline={content?.headline} subheadline={content?.subheadline} />
 <BodyContent>
 	<div class="content__container">
@@ -105,6 +107,7 @@
 		</main>
 	</div>
 </BodyContent>
+</Modal>
 
 <style type="text/scss">
 	@import '../../../styles/components/_content.scss';
