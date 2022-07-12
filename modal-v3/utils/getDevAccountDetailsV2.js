@@ -1,15 +1,16 @@
 import fs from 'fs';
+import path from 'path';
 import { fileURLToPath } from 'url';
-import path, { dirname } from 'path';
 
-import devAccountMap from '../../../utils/devServerProxy/config/devAccounts.config';
-import devAccountMapV2 from '../../../utils/devServerProxy/config/devAccountsV2.config';
-import { getTerms } from '../../../utils/devServerProxy/lib/mockTerms';
-import { localizeCurrency, localizeNumber } from '../../../utils/devServerProxy/lib/miscellaneous';
+import devAccountMap from './config/devAccounts.config.js';
+import devAccountMapV2 from './config/devAccountsV2.config.js';
+import { getTerms } from './lib/mockTerms.js';
+import { localizeCurrency, localizeNumber } from './lib/miscellaneous.js';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-const CONTENT_PATH = path.resolve(__dirname, '../../../content');
+const filename = fileURLToPath(import.meta.url);
+const dirname = path.dirname(filename);
+
+const CONTENT_PATH = path.resolve(dirname, '../../content');
 
 const selectBestOffer = (offers = [], amount) =>
 	offers.reduce(
@@ -107,7 +108,7 @@ export default function getDevAccountDetailsV2({ account, amount, buyerCountry }
 	if (devAccountMap[account]) {
 		const [country, productNames, messageName] = devAccountMap[account];
 
-		const offers = JSON.parse(fs.readFileSync(path.resolve(__dirname, './terms.json'), 'utf-8'));
+		const offers = JSON.parse(fs.readFileSync(path.resolve(dirname, './terms.json'), 'utf-8'));
 		const terms = getTerms(country, offers, Number(amount));
 
 		return {
@@ -127,6 +128,7 @@ export default function getDevAccountDetailsV2({ account, amount, buyerCountry }
 		};
 	}
 
+	console.log('account', account);
 	if (devAccountMapV2[account]) {
 		const { country, modalViews, messageThresholds, offers } = devAccountMapV2[account];
 		const selectedMessage =

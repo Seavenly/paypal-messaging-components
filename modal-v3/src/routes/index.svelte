@@ -6,8 +6,11 @@
 	export let zoidInterfaceUrl: string;
 	export let scriptUid: string;
 	export let offer: string | undefined;
+	export let modalData: object;
 
 	offer = $xprops.offer;
+
+	console.warn('modalData:', modalData);
 </script>
 
 {#if !offer}

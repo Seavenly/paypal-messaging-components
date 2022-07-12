@@ -1,8 +1,8 @@
-import { populateTemplate } from '../../../utils/devServerProxy/lib/miscellaneous';
-import getDevAccountDetailsV2 from './getDevAccountDetailsV2';
+import { populateTemplate } from './lib/miscellaneous.js';
+import getDevAccountDetailsV2 from './getDevAccountDetailsV2.js';
 
 export const getModalData = req => {
-	const url = new URL(req.url);
+	const url = new URL(`https://localhost.paypal.com:8090${req.url}`);
 	const clientId = url.searchParams.get('client_id');
 	const payerId = url.searchParams.get('payer_id');
 	const merchantId = url.searchParams.get('merchant_id');
