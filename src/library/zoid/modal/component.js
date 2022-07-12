@@ -32,16 +32,7 @@ import prerenderTemplate from './prerenderTemplate';
 export default createGlobalVariableGetter('__paypal_credit_modal__', () =>
     create({
         tag: 'paypal-credit-modal',
-        url: ({ props }) => {
-            const baseUrl = getGlobalUrl('MODAL');
-            const standardOffer = getStandardProductOffer(props.offer);
-
-            if (standardOffer) {
-                return `${baseUrl}/offer/${standardOffer.toLowerCase().replace(/_/g, '-')}`;
-            }
-
-            return baseUrl;
-        },
+        url: getGlobalUrl('MODAL'),
         // eslint-disable-next-line security/detect-unsafe-regex
         domain: /\.paypal\.com(:\d+)?$/,
         containerTemplate,
