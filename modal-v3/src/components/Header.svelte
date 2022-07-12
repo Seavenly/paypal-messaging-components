@@ -1,4 +1,5 @@
 <script>
+	import { onMount } from 'svelte';
 	import Icon from '../components/Icon.svelte';
 	import { isLander, isIframe } from '../lib/';
 	import handleClose from '../lib/handleClose';
@@ -9,6 +10,9 @@
 
 	let landerTarget = isLander();
 	let iframeTarget = isIframe();
+
+	let closeButton;
+	onMount(() => closeButton.focus());
 	// export let isQualifying = {isQualifying ?? 'false'};
 	// export let qualifyingSubheadline = 'Qualifying Test';
 </script>
@@ -39,6 +43,7 @@
 			aria-label="Close"
 			type="button"
 			id="close-btn"
+			bind:this={closeButton}
 			on:click={() => handleClose('Close Button')}
 		>
 			<Icon name={'close'} />

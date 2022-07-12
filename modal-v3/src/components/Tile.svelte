@@ -1,5 +1,5 @@
 <script>
-	// import Icon from './Icon';
+	import Icon from './Icon.svelte';
 	import productListData from '../data/productList.js';
 
 	export let header;
@@ -10,7 +10,7 @@
 	export let setViewName = console.log;
 	// TODO: change to original: const { onClick } = useXProps();
 	export let onClick = console.log;
-	export let tileIcons = productListData.content.tileIcons;
+	const tileIcons = productListData.content.tileIcons;
 </script>
 
 <button
@@ -24,7 +24,7 @@
 >
 	<div class="tile__row">
 		<div class="tile__col tile__image">
-			<!-- <Icon content={tileIcons[icon]} /> -->
+			<Icon content={tileIcons[icon]} />
 		</div>
 		<div aria-hidden="true" class="tile__col">
 			<div class="tile__header">{header}</div>

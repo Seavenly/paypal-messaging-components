@@ -37,6 +37,7 @@
 				display: flex;
 				margin-right: 20px;
 
+				// TODO: figure out why this CSS isn't being used, also copied explicitly below on line 70, which should work but doesn't
 				svg {
 					width: 72px;
 					height: 45px;
@@ -64,4 +65,9 @@
 			}
 		}
 	}
+}
+
+.tile__row .tile__col.tile__image svg {
+	height: 45px;
+	width: 72px;
 }
