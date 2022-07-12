@@ -37,10 +37,11 @@
 				display: flex;
 				margin-right: 20px;
 
-				// TODO: figure out why this CSS isn't being used, also copied explicitly below on line 70, which should work but doesn't
 				svg {
-					width: 72px;
-					height: 45px;
+					:global & {
+						width: 72px;
+						height: 45px;
+					}
 				}
 			}
 
