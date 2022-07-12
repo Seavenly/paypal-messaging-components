@@ -1,11 +1,16 @@
 <script>
+	import { goto } from '$app/navigation';
+
 	let classes = ['button'];
 	export let type = 'button';
 	export let className = 'product-list-link';
 	export let secondary = '';
-	export let openProductList = () => {};
 
 	if (className) classes = [...classes, className];
+
+	const openProductList = () => {
+		goto('/credit-presentment/smart/modal');
+	};
 </script>
 
 <button
@@ -13,7 +18,7 @@
 	class={classes.join(' ')}
 	class:secondary
 	{type}
-	on:click={openProductList()}
+	on:click={openProductList}
 >
 	<slot />
 </button>

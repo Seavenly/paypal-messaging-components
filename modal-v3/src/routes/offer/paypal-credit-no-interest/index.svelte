@@ -75,9 +75,7 @@
 						<!--TODO: conditionally render productListLink component-->
 						<!-- {#if views?.length > 2} -->
 						<li class="content__footer-item">
-							<ProductListLink openProductList={renderProductListLink}
-								>{linkToProductList}</ProductListLink
-							>
+							<ProductListLink>{linkToProductList}</ProductListLink>
 						</li>
 						<!-- {/if} -->
 					</ul>

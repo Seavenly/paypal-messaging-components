@@ -98,7 +98,7 @@
 					</div>
 					<div class="content__row productLink">
 						<div class="productLink__container">
-							<ProductListLink openProductList={renderProductListLink}>
+							<ProductListLink>
 								{linkToProductList}
 							</ProductListLink>
 						</div>
