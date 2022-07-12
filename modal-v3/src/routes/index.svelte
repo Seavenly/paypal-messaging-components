@@ -1,4 +1,5 @@
 <script>
+	import Modal from '../components/Modal.svelte';
 	import Header from '../components/Header.svelte';
 	import BodyContent from '../components/BodyContent.svelte';
 	import Tile from '../components/Tile.svelte';
@@ -25,44 +26,46 @@
 	export let setViewName = () => {};
 </script>
 
-<Header logo={'logo'} headline={content?.headline} />
-<BodyContent>
-	<div class="content__container">
-		<main class="main">
-			<div class="content__body">
-				<div class="content__row dynamic">
-					<div class="content__col">
-						{#if showPayLaterInstructions}
-							<div class="content__row instructions">
-								<p>
-									{@html instructions?.payLater}
-								</p>
-							</div>
-						{/if}
-						{#each availableTiles.payLater as { header, body, icon, viewName }}
-							<Tile {header} {body} {icon} {viewName} {setViewName} />
-						{/each}
+<Modal>
+	<Header logo={'logo'} headline={content?.headline} />
+	<BodyContent>
+		<div class="content__container">
+			<main class="main">
+				<div class="content__body">
+					<div class="content__row dynamic">
+						<div class="content__col">
+							{#if showPayLaterInstructions}
+								<div class="content__row instructions">
+									<p>
+										{@html instructions?.payLater}
+									</p>
+								</div>
+							{/if}
+							{#each availableTiles.payLater as { header, body, icon, viewName }}
+								<Tile {header} {body} {icon} {viewName} {setViewName} />
+							{/each}
 
-						{#if showCreditInstructions}
-							<div class="content__row instructions">
-								<p>
-									{@html instructions?.credit}
-								</p>
-							</div>
-						{/if}
-						{#each availableTiles.credit as { header, body, icon, viewName }}
-							<Tile {header} {body} {icon} {viewName} {setViewName} />
-						{/each}
+							{#if showCreditInstructions}
+								<div class="content__row instructions">
+									<p>
+										{@html instructions?.credit}
+									</p>
+								</div>
+							{/if}
+							{#each availableTiles.credit as { header, body, icon, viewName }}
+								<Tile {header} {body} {icon} {viewName} {setViewName} />
+							{/each}
+						</div>
+						<div class="content__col collapsed">
+							<div class="branded-image" />
+						</div>
 					</div>
-					<div class="content__col collapsed">
-						<div class="branded-image" />
-					</div>
+					<div class="content__row disclosure collapsed">{disclosure}</div>
 				</div>
-				<div class="content__row disclosure collapsed">{disclosure}</div>
-			</div>
-		</main>
-	</div>
-</BodyContent>
+			</main>
+		</div>
+	</BodyContent>
+</Modal>
 
 <style type="text/scss">
 	@import '../styles/components/_content.scss';

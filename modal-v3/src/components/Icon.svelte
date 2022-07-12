@@ -1,7 +1,7 @@
 <script>
 	export let name = '';
-	export let color;
-	export let content;
+	export let color = '';
+	export let content = undefined;
 </script>
 
 {#if typeof content !== 'undefined'}

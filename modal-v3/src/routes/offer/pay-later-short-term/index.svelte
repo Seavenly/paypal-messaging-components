@@ -46,8 +46,6 @@
 			paymentDate: item?.payment_date ?? donutTimestamps[index]
 		})
 	);
-
-	console.log({ hasInstallments, donutItems });
 </script>
 
 <svelte:head>
@@ -57,56 +55,56 @@
 </svelte:head>
 
 <Modal>
-<Header logo={'logo'} headline={content?.headline} subheadline={content?.subheadline} />
-<BodyContent>
-	<div class="content__container">
-		<main class="main">
-			<div class="content__body">
-				<div class="dynamic__container">
-					<div class="content__row dynamic">
-						<div class="content__col">
-							<div class="content__row donuts">
-								<div class="donuts__container">
-									<span aria-hidden={!isQualifying} class="sr-only">
-										{donutScreenReaderString}
-									</span>
-									<!-- regex replaces EUR with the euro symbol € -->
-									{#each donutItems as { periodicPayment, currentNumber, paymentDate }}
-										<Donut
-											{qualifying}
-											{periodicPayment}
-											{currentNumber}
-											{paymentDate}
-											numberOfPayments={donutItems.length}
-										/>
-									{/each}
+	<Header logo={'logo'} headline={content?.headline} subheadline={content?.subheadline} />
+	<BodyContent>
+		<div class="content__container">
+			<main class="main">
+				<div class="content__body">
+					<div class="dynamic__container">
+						<div class="content__row dynamic">
+							<div class="content__col">
+								<div class="content__row donuts">
+									<div class="donuts__container">
+										<span aria-hidden={!isQualifying} class="sr-only">
+											{donutScreenReaderString}
+										</span>
+										<!-- regex replaces EUR with the euro symbol € -->
+										{#each donutItems as { periodicPayment, currentNumber, paymentDate }}
+											<Donut
+												{qualifying}
+												{periodicPayment}
+												{currentNumber}
+												{paymentDate}
+												numberOfPayments={donutItems.length}
+											/>
+										{/each}
+									</div>
+								</div>
+								<Instructions {instructions} />
+							</div>
+							<div class="content__col">
+								<div class="branded-image">
+									<!-- TODO: include Icon component when desktop images are final -->
 								</div>
 							</div>
-							<Instructions {instructions} />
 						</div>
-						<div class="content__col">
-							<div class="branded-image">
-								<!-- TODO: include Icon component when desktop images are final -->
-							</div>
+					</div>
+					<div class="content__row disclosure">
+						<p>
+							<InlineLinks text={currencyFormat(disclosure)} />
+						</p>
+					</div>
+					<div class="content__row productLink">
+						<div class="productLink__container">
+							<ProductListLink openProductList={renderProductListLink}>
+								{content?.linkToProductList}
+							</ProductListLink>
 						</div>
 					</div>
 				</div>
-				<div class="content__row disclosure">
-					<p>
-						<InlineLinks text={currencyFormat(disclosure)} />
-					</p>
-				</div>
-				<div class="content__row productLink">
-					<div class="productLink__container">
-						<ProductListLink openProductList={renderProductListLink}>
-							{content?.linkToProductList}
-						</ProductListLink>
-					</div>
-				</div>
-			</div>
-		</main>
-	</div>
-</BodyContent>
+			</main>
+		</div>
+	</BodyContent>
 </Modal>
 
 <style type="text/scss">
