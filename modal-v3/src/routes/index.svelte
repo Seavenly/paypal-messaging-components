@@ -2,9 +2,9 @@
 	import Header from '../components/Header.svelte';
 	import BodyContent from '../components/BodyContent.svelte';
 	import Tile from '../components/Tile.svelte';
-	import productListData from '../data/productList.js';
 
-	export let content = productListData.content;
+	export let customData;
+	export let content = customData.views[0].content;
 
 	const { instructions, disclosure, productTiles } = content;
 

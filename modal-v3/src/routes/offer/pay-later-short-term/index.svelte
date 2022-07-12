@@ -6,13 +6,15 @@
 	import ProductListLink from '../../../components/ProductListLink.svelte';
 	import Donut from '../../../components/Donut.svelte';
 	import InlineLinks from '../../../components/InlineLinks.svelte';
-	import shortTermData from '../../../data/shortTerm.js';
 	import { currencyFormat } from '../../../lib/currencyFormat';
 
-	export let productMeta = shortTermData.productMeta;
-	export let content = shortTermData.content;
+
+	
 	export let zoidInterfaceUrl;
 	export let scriptUid;
+	export let customData;
+	export let productMeta = customData.views[0].meta;
+	export let content = customData.views[0].content;
 
 	const {
 		instructions,
@@ -47,7 +49,6 @@
 		})
 	);
 
-	console.log({ hasInstallments, donutItems });
 </script>
 
 <svelte:head>

@@ -1,16 +1,17 @@
 <script>
 	// import Icon from './Icon';
-	import productListData from '../data/productList.js';
 
 	export let header;
 	export let body;
 	export let icon;
 	export let viewName;
+	
 
 	export let setViewName = console.log;
 	// TODO: change to original: const { onClick } = useXProps();
 	export let onClick = console.log;
-	export let tileIcons = productListData.content.tileIcons;
+	export let customData;
+	export let tileIcons = customData.views[0].content.tileIcons;
 </script>
 
 <button

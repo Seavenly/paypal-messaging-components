@@ -5,8 +5,6 @@ export function get({ request }: RequestEvent): RequestHandlerOutput {
 	const url = new URL(request.url);
 
 	const customData = getModalData(request);
-	console.log("Modal Data:\n")
-	console.log(customData)
 
 	return {
 		status: 200,
