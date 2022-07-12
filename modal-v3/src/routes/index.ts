@@ -1,5 +1,5 @@
 import type { RequestEvent, RequestHandlerOutput } from '@sveltejs/kit';
-import { getModalData } from 'src/utils/utils';
+import { getModalData } from '../../src/utils/utils';
 
 export function get(req: RequestEvent): RequestHandlerOutput {
 
