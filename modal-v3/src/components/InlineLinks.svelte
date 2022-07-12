@@ -1,5 +1,6 @@
 <script>
-	// export let text = 'xy';
+	import { xprops } from '../stores/xprops';
+
 	export let text = [
 		'Please',
 		'View the PayPal Credit',
@@ -9,14 +10,11 @@
 		]
 	];
 
-	// TODO: change to original: const { onClick } = useXProps();
-	export let onClick = console.log;
+	const { onClick } = $xprops;
 
-	const getClickObject = (linkText) => ({
+	const getClickObject = (linkText) =>
 		// Remove trailing punctuation if it exists
-		linkName: linkText.replace(/[^\w]$/, ''),
-		src: 'link_click'
-	});
+		onClick({ linkName: linkText.replace(/[^\w]$/, ''), src: 'link_click' });
 </script>
 
 {#if !Array.isArray(text)}

@@ -1,15 +1,18 @@
 <script>
 	import { goto } from '$app/navigation';
+	import { xprops } from '../stores/xprops';
 
 	let classes = ['button'];
 	export let type = 'button';
 	export let className = 'product-list-link';
 	export let secondary = '';
 
+	const { onClick } = $xprops;
 	if (className) classes = [...classes, className];
 
 	const openProductList = () => {
-		goto('/credit-presentment/smart/modal');
+		onClick({ linkName: 'PRODUCT_LIST', src: 'link_click' });
+		goto('/credit-presentment/smart/modal/product-list');
 	};
 </script>
 
