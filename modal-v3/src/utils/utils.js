@@ -2,10 +2,11 @@ import { populateTemplate } from '../../../utils/devServerProxy/lib/miscellaneou
 import getDevAccountDetailsV2 from './getDevAccountDetailsV2';
 
 export const getModalData = req => {
-	const clientId = req.url.searchParams.get('client_id');
-	const payerId = req.url.searchParams.get('payer_id');
-	const merchantId = req.url.searchParams.get('merchant_id');
-	const amount = req.url.searchParams.get('amount');
+	const url = new URL(req.url);
+	const clientId = url.searchParams.get('client_id');
+	const payerId = url.searchParams.get('payer_id');
+	const merchantId = url.searchParams.get('merchant_id');
+	const amount = url.searchParams.get('amount');
 	const account = merchantId || clientId || payerId;
 
 	const { country, terms, modalViews } = getDevAccountDetailsV2({ account, amount });

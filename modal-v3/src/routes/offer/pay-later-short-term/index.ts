@@ -1,12 +1,12 @@
 import type { RequestEvent, RequestHandlerOutput } from '@sveltejs/kit';
+import { getModalData } from '../../../utils/utils';
 
 export function get({ request }: RequestEvent): RequestHandlerOutput {
-	const customData = request.headers.get('__X-CUSTOM-SERVER-DATA__');
 	const url = new URL(request.url);
 
-	if (customData) {
-		console.log('customData', customData);
-	}
+	const customData = getModalData(request);
+	console.log("Modal Data:\n")
+	console.log(customData)
 
 	return {
 		status: 200,

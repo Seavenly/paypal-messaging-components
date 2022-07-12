@@ -9,7 +9,7 @@ import { localizeCurrency, localizeNumber } from '../../../utils/devServerProxy/
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-const CONTENT_PATH = path.resolve(__dirname, '../../../src/components/modal/lib/hooks/content');
+const CONTENT_PATH = path.resolve(__dirname, '../../../content');
 
 const selectBestOffer = (offers = [], amount) =>
 	offers.reduce(
