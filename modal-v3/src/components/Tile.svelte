@@ -1,5 +1,6 @@
 <script>
 	import Icon from './Icon.svelte';
+	import { xprops } from '../stores/xprops';
 
 	export let modalData;
 	export let content = modalData.views[0].content;
@@ -8,9 +9,9 @@
 	export let icon;
 	export let viewName;
 
-	export let setViewName = console.log;
-	// TODO: change to original: const { onClick } = useXProps();
-	export let onClick = console.log;
+	export let setViewName = () => {};
+
+	const { onClick } = $xprops;
 	const tileIcons = content.tileIcons;
 </script>
 
