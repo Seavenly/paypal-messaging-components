@@ -1,8 +1,10 @@
 <script>
+	import { goto } from '$app/navigation';
 	import Modal from '@/components/Modal.svelte';
 	import Header from '@/components/Header.svelte';
 	import BodyContent from '@/components/BodyContent.svelte';
 	import Tile from '@/components/Tile.svelte';
+	import { xprops } from '@/stores/xprops';
 
 	// export let content = productListData.content;
 	export let zoidInterfaceUrl;
@@ -26,7 +28,18 @@
 	const showPayLaterInstructions = productTiles && !!availableTiles.payLater?.length;
 	const showCreditInstructions = productTiles && !!availableTiles.credit?.length;
 
-	export let setViewName = () => {};
+	const getQueryStringFromObject = (object) => {
+		return Object.entries(object)
+			.filter(([, value]) => !!value && typeof value !== 'function')
+			.map(([key, value]) => `${key}=${encodeURIComponent(value)}`)
+			.join('&');
+	};
+
+	let setViewName = (viewName) => {
+		const route = viewName.toLowerCase().replace(/_/g, '-');
+		const queryString = getQueryStringFromObject({ ...$xprops, payer_id: $xprops.account });
+		goto(`/credit-presentment/smart/modal/offer/${route}?${queryString}`);
+	};
 </script>
 
 <svelte:head>
