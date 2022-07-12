@@ -5,8 +5,9 @@
 
 	export let zoidInterfaceUrl: string;
 	export let scriptUid: string;
+	export let offer: string | undefined;
 
-	let offer = $xprops.offer;
+	offer = $xprops.offer;
 </script>
 
 {#if !offer}

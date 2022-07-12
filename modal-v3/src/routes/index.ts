@@ -7,7 +7,8 @@ export function get({ request }: RequestEvent): RequestHandlerOutput {
 	return {
 		body: {
 			zoidInterfaceUrl: 'https://localhost.paypal.com:8080/messaging.js',
-			scriptUid: url.searchParams.get('scriptUID')
+			scriptUid: url.searchParams.get('scriptUID'),
+			offer: url.searchParams.get('offer')
 		}
 	};
 }

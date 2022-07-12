@@ -90,7 +90,7 @@ export default createGlobalVariableGetter('__paypal_credit_modal__', () =>
             },
             offer: {
                 type: 'string',
-                queryParam: false,
+                queryParam: true,
                 required: false,
                 decorate: ({ value }) => getStandardProductOffer(value)
             },
