@@ -1,9 +1,10 @@
 <script lang="js">
 	export let instructions = [];
+	export let className = '';
 </script>
 
 <div class="content__row instructions">
-	<ol class="collapsed">
+	<ol class={`collapsed ${className}`}>
 		{#each instructions as instruction, index}
 			<li class="instructions__item-wrapper">
 				<div class="instructions__bullet">

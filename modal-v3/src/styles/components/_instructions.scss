@@ -26,6 +26,11 @@
 			@include desktop {
 				width: 34%;
 			}
+
+			&.short-term {
+				max-width: 315px;
+				padding: 15px 10px 0px;
+			}
 		}
 	}
 	li {

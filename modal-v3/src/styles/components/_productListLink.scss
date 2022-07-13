@@ -1,5 +1,11 @@
 @use '../abstracts/index' as *;
 
+.button {
+	&.short-term {
+		padding: 0px;
+	}
+}
+
 .product-list-link {
 	display: flex;
 	border: none;

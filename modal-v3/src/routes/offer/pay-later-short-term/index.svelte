@@ -20,6 +20,8 @@
 	let { content, meta: productMeta } = data;
 
 	const {
+		headline,
+		subheadline,
 		instructions,
 		linkToProductList,
 		estimatedInstallments,
@@ -60,7 +62,7 @@
 </svelte:head>
 
 <Modal>
-	<Header logo={'logo'} headline={content?.headline} subheadline={content?.subheadline} />
+	<Header logo={'logo'} {headline} {subheadline} />
 	<BodyContent>
 		<div class="content__container">
 			<main class="main">
@@ -85,7 +87,7 @@
 										{/each}
 									</div>
 								</div>
-								<Instructions {instructions} />
+								<Instructions {instructions} className={'short-term'} />
 							</div>
 							<div class="content__col">
 								<div class="branded-image">
@@ -101,7 +103,7 @@
 					</div>
 					<div class="content__row productLink">
 						<div class="productLink__container">
-							<ProductListLink>
+							<ProductListLink className={'short-term'}>
 								{linkToProductList}
 							</ProductListLink>
 						</div>

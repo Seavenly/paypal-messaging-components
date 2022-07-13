@@ -2,9 +2,9 @@
 	import { goto } from '$app/navigation';
 	import { xprops } from '../stores/xprops';
 
-	let classes = ['button'];
+	let classes = ['button', 'product-list-link'];
 	export let type = 'button';
-	export let className = 'product-list-link';
+	export let className = '';
 	export let secondary = '';
 
 	const { onClick } = $xprops;
