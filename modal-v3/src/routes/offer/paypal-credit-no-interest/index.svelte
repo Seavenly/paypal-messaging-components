@@ -1,3 +1,7 @@
+<script context="module">
+	export { load } from '../../../lib/serverData';
+</script>
+
 <script>
 	import Modal from '../../../components/Modal.svelte';
 	import Header from '../../../components/Header.svelte';

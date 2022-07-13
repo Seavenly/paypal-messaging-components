@@ -1,3 +1,7 @@
+<script context="module">
+	export { load } from '../../lib/serverData';
+</script>
+
 <script>
 	import { goto } from '$app/navigation';
 	import Modal from '@/components/Modal.svelte';

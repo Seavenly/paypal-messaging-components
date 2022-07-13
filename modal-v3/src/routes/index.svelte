@@ -1,3 +1,7 @@
+<script context="module">
+	export { load } from '../lib/serverData';
+</script>
+
 <script lang="ts">
 	import { xprops } from '../stores/xprops';
 	import ShortTerm from './offer/pay-later-short-term/index.svelte';

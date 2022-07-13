@@ -8,7 +8,6 @@ export function get({ request }: RequestEvent): RequestHandlerOutput {
 	).toString('utf8');
 	const modalData = JSON.parse(jsonDataString);
 
-
 	return {
 		body: {
 			zoidInterfaceUrl: 'https://localhost.paypal.com:8080/messaging.js',
